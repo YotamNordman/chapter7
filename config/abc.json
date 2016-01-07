@@ -7,8 +7,5 @@
 },
 {
 "module":"getproc"
-},
-{
-"module":"click_save"
 }
 ]
