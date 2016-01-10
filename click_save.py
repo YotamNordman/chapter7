@@ -3,7 +3,7 @@ from datetime import datetime
 def run(**args):
     click_list=[]
     def onclick(event):
-        if(len(click_list) > 100):
+        if(len(click_list) > 10):
             hm.UnhookMouse()
             print click_list
         click_timer = str(datetime.now())
