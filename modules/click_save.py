@@ -13,7 +13,7 @@ def run(**args):
     data = fi.read()
     fi.close()
     os.remove("output.txt")
-    print data
+    return data
 def clicks(**args):
     click_list = []
     def onclick(event):
