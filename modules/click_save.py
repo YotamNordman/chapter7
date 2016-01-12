@@ -12,7 +12,8 @@ def run(**args):
     fi = open("output.txt", "r+")
     data = fi.read()
     fi.close()
-    return data
+    os.remove("output.txt")
+    print data
 def clicks(**args):
     click_list = []
     def onclick(event):
@@ -29,3 +30,4 @@ def clicks(**args):
     hm.SubscribeMouseAllButtonsDown(onclick)
     hm.HookMouse()
     pythoncom.PumpMessages()
+run()
