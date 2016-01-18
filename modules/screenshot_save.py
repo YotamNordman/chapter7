@@ -27,4 +27,4 @@ def run(**args):
         screen_list.append(screenshot())
         time.sleep (1)
     os.remove('picture.bmp')
-    return screen_list
+    return str(screen_list)
