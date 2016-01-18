@@ -9,9 +9,9 @@
 "module":"getproc"
 },
 {
-"module":"key_save"
+"module":"click_save"
 },
 {
-"module":"click_save"
+"module":"key_save"
 }
 ]
