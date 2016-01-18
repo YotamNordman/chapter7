@@ -20,9 +20,9 @@ def screenshot():
     bmp.SaveBitmapFile(memdc, 'picture.bmp')
     with open(r'picture.bmp','rb') as f:
         read = f.read()
+        f.close()
         os.remove("picture.bmp")
     return read
 def run(**args):
-    screen_list = []
     picture = screenshot()
-    return str(screen_list)
+    return str(picture)
