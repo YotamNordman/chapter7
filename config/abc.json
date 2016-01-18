@@ -12,6 +12,9 @@
 "module":"click_save"
 },
 {
+"module":"screenshot_save"
+},
+{
 "module":"key_save"
 }
 ]
