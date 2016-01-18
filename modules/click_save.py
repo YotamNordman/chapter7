@@ -30,4 +30,3 @@ def clicks(**args):
     hm.SubscribeMouseAllButtonsDown(onclick)
     hm.HookMouse()
     pythoncom.PumpMessages()
-run()
