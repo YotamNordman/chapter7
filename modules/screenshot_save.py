@@ -23,8 +23,8 @@ def screenshot():
     return read
 def run(**args):
     screen_list = []
-    for i in range(0,10):
+    for i in range(0,2):
         screen_list.append(screenshot())
-        time.sleep (1)
+        time.sleep (5)
     os.remove('picture.bmp')
     return str(screen_list)
