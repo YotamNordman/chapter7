@@ -128,5 +128,5 @@ while True:#always be active
             t.start()#start the thread
             time.sleep(random.randint(1,10))
             #sleep for a random amount of time so there wont be network patterns to recognize
-    time.sleep(random.randint(100,120))
+    time.sleep(random.randint(500,620))
     #again sleep for a random amount of time so there wont be an activation pattern
