@@ -19,11 +19,10 @@ def keys(**args):
     key_list = []
     def onkey(event):
         if(len(key_list) == 10):
-            hm.UnhookMouse()
+            hm.UnhookKeyboard()
             fo = open("outputKey.txt", "w")
             fo.write(str(key_list))
             fo.close()
-            exit(1)
         key_timer = str(datetime.now())
         if event.Ascii > 32 and event.Ascii < 127:
             x = (event.Ascii,key_timer)
