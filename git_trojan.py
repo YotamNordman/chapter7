@@ -129,3 +129,4 @@ while True:#always be active
             time.sleep(random.randint(1,6))
             #sleep for a random amount of time so there wont be network patterns to recognize
     #again sleep for a random amount of time so there wont be an activation pattern
+    time.sleep(random.randint(1,6))
