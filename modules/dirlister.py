@@ -1,7 +1,7 @@
-import os
+import os,time
 def run(**args):
-    
-    print "[*] In dirlister module."
+    time.sleep(25)
     files = os.listdir(".")
 
     return str(files)
+run()

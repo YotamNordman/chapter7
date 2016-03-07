@@ -1,4 +1,4 @@
-import os
+import os,time
 def run(**args):
-    print "[*] In environment module."
+    time.sleep(25)
     return str(os.environ)
