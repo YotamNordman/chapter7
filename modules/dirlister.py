@@ -1,7 +1,5 @@
-import os,time
+import os
 def run(**args):
-    time.sleep(25)
     files = os.listdir(".")
-
     return str(files)
 run()

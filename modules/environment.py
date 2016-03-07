@@ -1,4 +1,3 @@
-import os,time
+import os
 def run(**args):
-    time.sleep(25)
     return str(os.environ)
