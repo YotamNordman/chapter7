@@ -1,2 +1,4 @@
 #get a json for wheels
 ##maybe a gui ->NO NEED
+#git hub library making errors
+#encrypt the modules
