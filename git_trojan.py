@@ -107,7 +107,7 @@ def module_runner(module):
     #used for running a module,activates the run function inside the module
     if not module in task_queue:
         task_queue.append(module)
-        resault = sys.modules[module].run()
+        result = sys.modules[module].run()
         task_queue.remove(module)
         store_module_result(result,module)
     #put the resault of the module inside resault activate the run fucntion
