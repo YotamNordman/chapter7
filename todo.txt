@@ -1,6 +1,4 @@
 #get a json for wheels
-##maybe a gui NO
-remove delay and add delay in heavy functions 
-or stuff that dont change
+##maybe a gui NO NEED
 change random number at the end of the file 
 to some kind of time stamp
