@@ -1,4 +1,2 @@
 #get a json for wheels
-##maybe a gui NO NEED
-change random number at the end of the file 
-to some kind of time stamp
+##maybe a gui ->NO NEED
