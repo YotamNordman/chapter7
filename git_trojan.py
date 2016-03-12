@@ -22,7 +22,7 @@ print "[*]Staring time count %s" % str(time.clock())
 #functions:
 def get_wheel(wheel):
     file_contant = get_file_contents("wheels/%s" % wheel)
-    fo = open(wheel, "wb")
+    fo = open(wheel+ ".whl", "wb")
     file_contant = base64.b64decode(str(file_contant))
     fo.write(file_contant)
     fo.close()
