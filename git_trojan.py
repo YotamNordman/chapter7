@@ -120,7 +120,7 @@ def module_runner(module):
 def run_module(module):
     #sys.modules give all modules that were imported so far, can run it from there
     return sys.modules[module].run()
-install_wheel("github3.py-0.9.3-py2.py3-none-any.whl")
+install_wheel("github3.py-1.0.0a1-py2.py3-none-any.whl")
 from github3 import login
 get_wheel("pyHook-1.5.1-cp27-none-win32")
 get_wheel("pywin32-220-cp27-none-win32")
