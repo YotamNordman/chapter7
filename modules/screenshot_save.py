@@ -5,6 +5,12 @@ import win32con
 import time
 import os
 import ImageGrab
+def screenshot():
+    im = ImageGrab.grab()
+    im.save('screenshot.png')
 def run(**args):
-    image = ImageGrab.grab()
-    return str(image)
+    screenshot()
+    f = open("screenshot.png","rb")
+    data = f.read()
+    f.close()
+    return str(data)
