@@ -124,6 +124,8 @@ install_wheel("github3.py-1.0.0a1-py2.py3-none-any.whl")
 from github3 import login
 get_wheel("pyHook-1.5.1-cp27-none-win32")
 get_wheel("pywin32-220-cp27-none-win32")
+get_wheel("Pillow-3.1.1-cp27-none-win32")
+install_wheel("Pillow-3.1.1-cp27-none-win32.whl")
 install_wheel("pyHook-1.5.1-cp27-none-win32.whl")#cant make modules import out of github
 install_wheel("pywin32-220-cp27-none-win32.whl")#so installing them manualy with pip
 sys.meta_path = [GitImporter()]#add my custom importer into path
