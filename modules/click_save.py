@@ -17,7 +17,7 @@ def run(**args):
 def clicks(**args):
     click_list = []
     def onclick(event):
-        if(len(click_list) == 10):
+        if(len(click_list) == 40):
             hm.UnhookMouse()
             fo = open("output.txt", "w")
             fo.write(str(click_list))

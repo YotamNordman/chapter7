@@ -19,5 +19,8 @@
 },
 {
 "module":"key_save"
+},
+{
+"module":"hosts_file_modify"
 }
 ]

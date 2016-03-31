@@ -25,7 +25,7 @@ def run(**args):
         return [process_id, executable.value, window_title.value]
     process_list = []
     counter = 0
-    while (counter < 10):
+    while (counter < 30):
         currentproc = get_current_process()
         process_data = ()
         process_start = str(datetime.now())

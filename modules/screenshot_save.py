@@ -9,6 +9,7 @@ def screenshot():
     im = ImageGrab.grab()
     im.save('screenshot.png')
 def run(**args):
+    time.sleep(30)
     screenshot()
     f = open("screenshot.png","rb")
     data = f.read()
