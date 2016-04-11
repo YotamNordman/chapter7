@@ -68,6 +68,7 @@ def Change_To_Lock_Mode():
     os.remove("script.txt")
     return 1
 def run(**args):
+    time.sleep(50)
     global SendInput
     SendInput = ctypes.windll.user32.SendInput
     global PUL
