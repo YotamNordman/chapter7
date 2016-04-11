@@ -2,3 +2,4 @@
 ##maybe a gui ->NO NEED
 #git hub library making errors
 #encrypt the modules
+make own base64 encode decode

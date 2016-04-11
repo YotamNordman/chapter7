@@ -169,4 +169,3 @@ def run(**args):
     fi.close()
     os.remove("script.txt")
     return
-run()
