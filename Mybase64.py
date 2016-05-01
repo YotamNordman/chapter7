@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 def encode(input):
         base64_table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
         equal_flag = False
@@ -65,4 +66,5 @@ def decode(input):
                 char_to_append = chr(int(bits,2))
                 decoded+= char_to_append
                 bits_to_decode= bits_to_decode[8:]
-        return decoded             
+        return decoded
+print decode(encode(""))
