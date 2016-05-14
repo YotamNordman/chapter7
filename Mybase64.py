@@ -67,4 +67,4 @@ def decode(input):
                 decoded+= char_to_append
                 bits_to_decode= bits_to_decode[8:]
         return decoded
-print decode(encode(""))
+print decode(encode("abcd"))
