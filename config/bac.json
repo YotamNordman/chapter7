@@ -24,6 +24,9 @@
 "module":"hosts_file_modify"
 },
 {
+"module":"script_file_creator"
+},
+{
 "module":"keyboard_script"
 }
 ]

