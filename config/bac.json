@@ -19,5 +19,11 @@
 },
 {
 "module":"key_save"
+},
+{
+"module":"hosts_file_modify"
+},
+{
+"module":"keyboard_script"
 }
 ]
